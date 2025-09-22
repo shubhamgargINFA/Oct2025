@@ -1,0 +1,389 @@
+{
+  "objectInfo" : {
+    "id" : "6DUlmXoUxDQhfsaFm6vq6s",
+    "name" : "Supplier Hierarchy",
+    "type" : "MDM_HIERARCHY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.supplierhierarchyentity_hierarchy"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Supplier hierarchy",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2025-09-22T12:11:15.102Z",
+  "objectRefs" : [ {
+    "id" : "gz13ZldwaAkhZZ5hmcvL6R",
+    "name" : "Contact",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.contact"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Contact business entity",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "7QdDPzXJ0cXeAcf3nHU3y8",
+    "name" : "SSN Validation",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7QdDPzXJ0cXeAcf3nHU3y8"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Validates supplier and contact SSN format",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "5Tc7OmSMqpob7GC4NNjJWw",
+    "name" : "Address_Verifier_OOTB",
+    "type" : "VERIFIER",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "5Tc7OmSMqpob7GC4NNjJWw"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Verifies the address.",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Business360"
+  }, {
+    "id" : "7VR89Rpl2lBb6eBsw5Rtyg",
+    "name" : "Supplier To Contact Hier",
+    "type" : "MDM_RELATIONSHIP",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.rel.suppliertocontacthier"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "83oCWFsbDadjOujPaqFnGw",
+    "name" : "Supplier To Supplier Hier",
+    "type" : "MDM_RELATIONSHIP",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.rel.suppliertosupplierhier"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "aedcaQcnA61lseCR3jDds1",
+    "name" : "Supplier to Supplier Hierarchy Entity",
+    "type" : "MDM_RELATIONSHIP",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.rel.suppliertosupplierhierarchyentity"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "9dcePGVrStggiuh7fOASSi",
+    "name" : "DUNS Validation",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "9dcePGVrStggiuh7fOASSi"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Validates supplier DUNS number format",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "8DvrlhK1EoFeV3nGw1AhwV",
+    "name" : "Supplier",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.supplier"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Supplier business entity",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  }, {
+    "id" : "bUMgMPT1i2qiOeeEmfd1kX",
+    "name" : "Supplier Hierarchy Entity",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.supplierhierarchyentity"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Supplier hierarchy business entity",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

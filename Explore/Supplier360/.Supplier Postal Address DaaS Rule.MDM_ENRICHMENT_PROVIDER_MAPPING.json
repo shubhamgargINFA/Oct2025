@@ -1,0 +1,191 @@
+{
+  "objectInfo" : {
+    "id" : "gWk7ANY9QAAk8nWuX47OOp",
+    "name" : "Supplier Postal Address DaaS Rule",
+    "type" : "MDM_ENRICHMENT_PROVIDER_MAPPING",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.supplier.postaladdress_daas_mapping"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Contains the configured DaaS rule for the postal address field group.",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2025-09-22T12:11:15.104Z",
+  "objectRefs" : [ {
+    "id" : "8i6oslFTLscdtNvkuia5S8",
+    "name" : "Address Verification DaaS Provider",
+    "type" : "MDM_ENRICHMENT_PROVIDER",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "b360.av_daas_provider"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Enriches the address fields.",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Business360"
+  }, {
+    "id" : "k5Ah7tsyJGAl0cgTxKo2Ee",
+    "name" : "Default",
+    "type" : "MDM_SRC_SYSTEM",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "b360.default.system"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Business360"
+  }, {
+    "id" : "8DvrlhK1EoFeV3nGw1AhwV",
+    "name" : "Supplier",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "s360.supplier"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Supplier business entity",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Supplier360"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

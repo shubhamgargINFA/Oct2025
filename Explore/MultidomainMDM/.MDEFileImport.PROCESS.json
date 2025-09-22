@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "ew3dvABFUCec2akpXVmgGR",
+    "name" : "MDEFileImport",
+    "type" : "PROCESS",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "hOzEkhK6LlRkPUE-gt-594449-2023-05-16T09:56:33.128Z::pd.xml"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "application/json; charset=utf-8",
+        "documentState" : "VALID"
+      }
+    }
+  },
+  "dataFileExtension" : "xml",
+  "updateTime" : "2025-09-22T12:11:15.097Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

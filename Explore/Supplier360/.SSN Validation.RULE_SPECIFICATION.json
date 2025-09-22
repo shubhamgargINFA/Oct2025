@@ -1,0 +1,27 @@
+{
+  "objectInfo" : {
+    "id" : "7QdDPzXJ0cXeAcf3nHU3y8",
+    "name" : "SSN Validation",
+    "type" : "RULE_SPECIFICATION",
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 0
+      },
+      "repoInfo" : {
+        "repoHandle" : "7QdDPzXJ0cXeAcf3nHU3y8"
+      },
+      "contextAttributes" : [ ],
+      "additionalInfo" : {
+        "description" : "Validates supplier and contact SSN format",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "json",
+  "updateTime" : "2025-09-22T12:11:15.105Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

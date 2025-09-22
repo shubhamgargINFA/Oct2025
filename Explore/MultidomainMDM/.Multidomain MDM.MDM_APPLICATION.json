@@ -1,0 +1,421 @@
+{
+  "objectInfo" : {
+    "id" : "6FZn2ceegJ9e5A6f7Q1e29",
+    "name" : "Multidomain MDM",
+    "type" : "MDM_APPLICATION",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "mde.mde"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Multidomain MDM business application",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2025-09-22T12:11:15.108Z",
+  "objectRefs" : [ {
+    "id" : "521IYWJb2f0b4mnnGxZaGL",
+    "name" : "Party_Custom_Page",
+    "type" : "MDM_APP_PAGE",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "party_custom_page"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Default"
+  }, {
+    "id" : "9aLm7Z27jdTkYpoCllbYED",
+    "name" : "Layout_Search_Party",
+    "type" : "MDM_APP_COMPONENT",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "layout_search_party"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Basic_Ingress_Egress"
+  }, {
+    "id" : "hpHKfWvM1w2fbyByIjcskx",
+    "name" : "FG_Two_Takeda",
+    "type" : "MDM_APP_PAGE",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "fg_two_takeda"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Default"
+  }, {
+    "id" : "27xTqF8a0vPev24MTrNbYL",
+    "name" : "MDE Report Set",
+    "type" : "MDM_REPORT_SET",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "mde.report.set"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "Contains a collection of reports and data sources.",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/MultidomainMDM"
+  }, {
+    "id" : "2ofpYwtm9VTbYo7ufHSkyJ",
+    "name" : "FGTwo",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "fgtwo"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Default"
+  }, {
+    "id" : "82W775Gv0wxeKftnM2spAC",
+    "name" : "Party",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "party"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Basic_Ingress_Egress"
+  }, {
+    "id" : "k5Ah7tsyJGAl0cgTxKo2Ee",
+    "name" : "Default",
+    "type" : "MDM_SRC_SYSTEM",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "b360.default.system"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : null,
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Business360"
+  }, {
+    "id" : "58IGCyowaZjj6Q5VMII2Ag",
+    "name" : "FGSearch",
+    "type" : "MDM_APP_COMPONENT",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        },
+        "r360" : {
+          "version" : "default"
+        }
+      },
+      "additionalSolutionsInSource" : {
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "fgsearch"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    },
+    "path" : "/Explore/Default"
+  } ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}

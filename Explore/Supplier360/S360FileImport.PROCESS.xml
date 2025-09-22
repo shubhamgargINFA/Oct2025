@@ -1,0 +1,460 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>X3932030thJ6gaa-gt-593632-2023-05-16T09:55:07.805Z::pd.xml</types1:EntryId>
+      <types1:Name>S360FileImport</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>bundle-license-notifier</types1:CreatedBy>
+      <types1:CreationDate>2023-05-16T09:55:08Z</types1:CreationDate>
+      <types1:ModifiedBy>bundle-license-notifier</types1:ModifiedBy>
+      <types1:ModificationDate>2024-05-14T19:17:45Z</types1:ModificationDate>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>bundle-license-notifier</types1:PublishedBy>
+      <types1:PublicationDate>2024-05-14T19:17:48Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.S360FileImport/S360FileImport.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="S360FileImport"
+                  name="S360FileImport"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="jobInstance"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="skipCleanup"
+                          required="true"
+                          type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="jobInstanceId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fault" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">SUCCESS</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment skipIfRunning="false" suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedRoles>
+                     <role>Admin</role>
+                     <role>Supplier 360 Task Admin</role>
+                     <role>Supplier 360 Commodity Manager</role>
+                     <role>Supplier 360 Credit Manager</role>
+                     <role>Supplier 360 Contract Manager</role>
+                     <role>Supplier 360 Risk Manager</role>
+                     <role>Supplier 360 Analyst</role>
+                     <role>Supplier 360 Data Steward</role>
+                     <role>Business360ProcessExecutor</role>
+                  </allowedRoles>
+               </rest>
+            </deployment>
+            <flow id="o061f8dec-2b0c-47be-9793-e1d3a906aa52">
+               <start id="b9a178a29-b004-4bb7-9ba9-67e3243b24aa">
+                  <link id="mb9f4c711-a585-4993-b04e-18525068ad5d"
+                        targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-k76ijvdg"/>
+               </start>
+               <service id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-k76ijvdg">
+                  <title>Start File Import Job</title>
+                  <serviceName>StartFileImportJob</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="jobInstance" source="field" updatable="true">input.jobInstance</parameter>
+                  </serviceInput>
+                  <link id="fcbc401d9-bfca-437c-b7d0-bce8588411e2"
+                        targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-k76ijved"/>
+               </service>
+               <milestone id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-k76ijved">
+                  <title>Job Created</title>
+                  <httpStatus>202</httpStatus>
+                  <link id="f42b72732-ce1a-4430-ac3c-cfd507bdd78c"
+                        targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62fa"/>
+               </milestone>
+               <eventContainer id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62fa">
+                  <service id="g9310ac33-a548-41a9-b5ca-cfac3d45565c">
+                     <title>File Import Staging</title>
+                     <serviceName>FileImport</serviceName>
+                     <serviceInput>
+                        <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="k047e9092-2e73-4b63-8d5a-21f7017d69aa">
+                     <link id="s2cc5f35c-773c-4423-9aa9-e56a87430ebc"
+                           targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62fa"
+                           type="containerLink"/>
+                  </flow>
+                  <flow id="vabc7ab83-6acc-4e73-8e67-4e212fd4c926">
+                     <assignment id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62fy">
+                        <title>Assignment to status</title>
+                        <operation source="constant" to="temp.status">FAILED</operation>
+                     </assignment>
+                     <link id="g6d25e2a4-9c99-41bd-b8a1-2a47729afef2"
+                           targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62fa"
+                           type="containerLink"/>
+                  </flow>
+                  <link id="rfb8b53c0-27d5-41ec-88ac-1a6fe28f4100"
+                        targetId="k047e9092-2e73-4b63-8d5a-21f7017d69aa"
+                        type="containerLink"/>
+                  <link id="fd670ca60-091d-4400-86cd-a59c3bca91e1"
+                        targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit1c"/>
+                  <events>
+                     <catch faultField="faultInfo"
+                            id="h9b2fc477-5299-4baa-ab54-a804f0b4d4c6"
+                            interrupting="true">
+                        <link id="vddcaee24-b443-4f5b-ab23-d72889590c18"
+                              targetId="vabc7ab83-6acc-4e73-8e67-4e212fd4c926"
+                              type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit1c"
+                          type="exclusive">
+                  <title>File Staging Status</title>
+                  <flow id="vb685cee3-2b23-430d-80a7-482d29470917">
+                     <eventContainer id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit49">
+                        <service id="x1e9d1638-c5c4-44bf-a450-2c373133dbac">
+                           <title>Ingress</title>
+                           <serviceName>IngressSplit</serviceName>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="h76265b67-b838-4efa-918e-45ff7976870b">
+                           <link id="oc04f10e2-bc45-48ff-b4d0-cf6f52ef184a"
+                                 targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit49"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="cd1e8c7a3-c042-46b1-aec9-b6cb596f4592">
+                           <service id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62bs">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">S360FileImport</parameter>
+                                 <parameter name="step" source="constant">Ingress</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="jdd861f8a-12b0-4f4b-bd3e-9b99eefe20a0"
+                                    targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit4m"/>
+                           </service>
+                           <throw id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit4m">
+                              <title>Throw 2</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">CAI_FI_002</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Ingress Failed</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="p480423f2-f3b0-44ba-b5e7-a3c030778a65"
+                              targetId="h76265b67-b838-4efa-918e-45ff7976870b"
+                              type="containerLink"/>
+                        <link id="o1ede57df-701f-40fb-937a-a63d1dcca0ca"
+                              targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit7h"/>
+                        <events>
+                           <catch faultField="faultInfo"
+                                  id="hbf785bff-2c66-4f8c-af32-fb60458787b6"
+                                  interrupting="true">
+                              <link id="kada805e8-da4f-4be4-9349-d26a33616500"
+                                    targetId="cd1e8c7a3-c042-46b1-aec9-b6cb596f4592"
+                                    type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit7h">
+                        <service id="la48bc864-064e-49d4-b7a3-5ed622c39ed9">
+                           <title>Load</title>
+                           <serviceName>Load</serviceName>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="p0f8dc461-c6a5-474d-bdac-4d45345fdceb">
+                           <eventContainer id="Service5505b629-1ed7-4e88-9fb0-16c27ae98056">
+                              <service id="r7fc59d10-aa07-4cba-9761-c207c62fc62c">
+                                 <title>Enrichment</title>
+                                 <serviceName>Vader</serviceName>
+                                 <serviceInput>
+                                    <parameter name="jobInstanceId" source="field">output.jobInstanceId</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="d45961bc9-4794-4b5d-b1fc-87fbf847ea54">
+                                 <link id="b8104366c-0595-4e82-a19d-9a41904269dc"
+                                       targetId="Service5505b629-1ed7-4e88-9fb0-16c27ae98056"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="p91bd182d-6366-41f9-a8b1-31d21c97b4d3">
+                                 <service id="Service992d7065-b423-4f44-9358-838c93605c34">
+                                    <title>End Step</title>
+                                    <serviceName>EndStep</serviceName>
+                                    <serviceInput>
+                                       <parameter name="skipCleanup" source="field">input.skipCleanup</parameter>
+                                       <parameter name="jobInstanceId" source="field">output.jobInstanceId</parameter>
+                                       <parameter name="status" source="constant">FAILED</parameter>
+                                       <parameter name="processName" source="constant">S360FileImport</parameter>
+                                       <parameter name="step" source="constant">Enrichment</parameter>
+                                    </serviceInput>
+                                    <link id="r092d6788-fe44-47e9-958b-590cc3655a4f"
+                                          targetId="Throw2f71c58f-23ba-42b8-b3b9-cee8f049358c"/>
+                                 </service>
+                                 <throw id="Throw2f71c58f-23ba-42b8-b3b9-cee8f049358c">
+                                    <title>Throw 6</title>
+                                    <throwInput>
+                                       <parameter name="code" source="constant" updatable="true">CAI_FI_006</parameter>
+                                       <parameter name="detail" source="constant" updatable="true">Enrichment Step Failed</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/Reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="ab5befc0e-109e-40e3-93b6-0607601ba1bc"
+                                    targetId="d45961bc9-4794-4b5d-b1fc-87fbf847ea54"
+                                    type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo"
+                                        id="l63b24f66-9380-4ec3-851f-0c40c2193db5"
+                                        interrupting="true">
+                                    <link id="q3b996959-f05b-499f-ae68-0444183dfa7a"
+                                          targetId="p91bd182d-6366-41f9-a8b1-31d21c97b4d3"
+                                          type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="p66d0ed90-3c50-45ce-b1aa-00bf95cc21f1"
+                                 targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit7h"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="l21aa7285-b1d1-4e92-b4da-f28e7d5cda54">
+                           <service id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62k9">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">S360FileImport</parameter>
+                                 <parameter name="step" source="constant">Load</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="r426efe01-722c-448f-a89f-7f5495f137e1"
+                                    targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit7u"/>
+                           </service>
+                           <throw id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit7u">
+                              <title>Throw 3</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">CAI_FI_003</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Load Step Failed</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="k4f3cbe37-e04b-4daa-9f2c-7461cc2e7632"
+                              targetId="p0f8dc461-c6a5-474d-bdac-4d45345fdceb"
+                              type="containerLink"/>
+                        <link id="neaa69ad5-c260-4caf-9bfd-6adff5fffd09"
+                              targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit8k"/>
+                        <events>
+                           <catch faultField="faultInfo"
+                                  id="o85515ed6-e747-4215-9d2c-7e9e7f7794b9"
+                                  interrupting="true">
+                              <link id="p4e04393e-824b-4e3b-a20d-bc285bcd6b81"
+                                    targetId="l21aa7285-b1d1-4e92-b4da-f28e7d5cda54"
+                                    type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit8k">
+                        <service id="xe7839048-0315-42c0-bb2b-c53133ff7392">
+                           <title>Index</title>
+                           <serviceName>Index</serviceName>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="nd00190c0-dd95-4cf0-a59b-ccc7da5537d3">
+                           <eventContainer id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kqmd6elf">
+                              <service id="c679fe6f4-a2d8-4c05-ae3b-486904f99cca">
+                                 <title>Match Tokenize</title>
+                                 <serviceName>MatchIndex</serviceName>
+                                 <serviceInput>
+                                    <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="x6817bad6-f9e8-433f-a9c6-2fe4acbb9be6">
+                                 <link id="m74d65d42-3e06-436a-9453-2c0ad16bc4ea"
+                                       targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kqmd6elf"
+                                       type="containerLink"/>
+                              </flow>
+                              <flow id="g7f02b1ac-5837-4e08-9a0d-1c4dad0d236e">
+                                 <throw id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kqmd6emx">
+                                    <title>Throw 5</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="e3b393e01-634b-4854-b97f-35bd8521d1bb"
+                                    targetId="x6817bad6-f9e8-433f-a9c6-2fe4acbb9be6"
+                                    type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo"
+                                        id="rf6e864ec-3e63-4af1-ae75-0181902297bd"
+                                        interrupting="true">
+                                    <link id="w86cdb20b-7254-42af-b236-1111babe00c1"
+                                          targetId="g7f02b1ac-5837-4e08-9a0d-1c4dad0d236e"
+                                          type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="f48b5cb50-8b8f-4fb4-a2dd-86014a54a7a2"
+                                 targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit8k"
+                                 type="containerLink"/>
+                        </flow>
+                        <flow id="p65358d14-f137-414f-90e7-a7f4ca4b1c45">
+                           <service id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62l8">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">S360FileImport</parameter>
+                                 <parameter name="step" source="constant">Index</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="fc51177d9-a12b-4b47-ad1e-2c731940ea64"
+                                    targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit8x"/>
+                           </service>
+                           <throw id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit8x">
+                              <title>Throw 4</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">CAI_FI_004</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Index step failed</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="da5c3ae72-afa2-4fe3-b679-19a77dc28728"
+                              targetId="nd00190c0-dd95-4cf0-a59b-ccc7da5537d3"
+                              type="containerLink"/>
+                        <link id="u62421397-8d39-4ae3-8162-09d08cea3192"
+                              targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgo3gk9"/>
+                        <events>
+                           <catch faultField="faultInfo"
+                                  id="b4e524d97-2aef-4594-b25b-1c6676aa8202"
+                                  interrupting="true">
+                              <link id="ge42c5fea-be50-4046-8987-7cec8c015a47"
+                                    targetId="p65358d14-f137-414f-90e7-a7f4ca4b1c45"
+                                    type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <service id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgo3gk9">
+                        <title>End Step</title>
+                        <serviceName>EndStep</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                           <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           <parameter name="status" source="constant">SUCCESS</parameter>
+                           <parameter name="processName" source="constant">S360FileImport</parameter>
+                        </serviceInput>
+                        <link id="j081cdaff-15d5-4ac8-946e-54e8780e4c99"
+                              targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit1t"/>
+                     </service>
+                     <end id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit1t">
+                        <title>End</title>
+                     </end>
+                  </flow>
+                  <flow id="s5f2aa21c-e0dd-4686-ba3e-1fd427669b4b">
+                     <service id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpgj62ei">
+                        <title>End Step</title>
+                        <serviceName>EndStep</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                           <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           <parameter name="status" source="constant">FAILED</parameter>
+                           <parameter name="processName" source="constant">S360FileImport</parameter>
+                           <parameter name="step" source="constant">File Import Staging</parameter>
+                           <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                        </serviceInput>
+                        <link id="pc4e21077-34e4-4b44-a321-dcdbe976afb0"
+                              targetId="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit1v"/>
+                     </service>
+                     <throw id="a1bF1ifAfLXOdiwOZC7EWfGl-a16R6Ag8rP1gng5BlN66llkm-kpghit1v">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">CAI_FI_001</parameter>
+                           <parameter name="detail" source="constant" updatable="true">File Import Staging failed</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Check ingress logs</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="u20ab7703-1b94-4e66-bdac-dd554a96aad6"
+                        targetId="vb685cee3-2b23-430d-80a7-482d29470917"
+                        type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.status}</arg>
+                           <arg name="right">SUCCESS</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="e1289925b-85c5-420a-8945-43152f1bb010"
+                        targetId="s5f2aa21c-e0dd-4686-ba3e-1fd427669b4b"
+                        type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>0nSaiiCaRigiyFaS1r0GWB</types1:GUID>
+      <types1:DisplayName>S360FileImport</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-09-22T12:10:42.231Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>

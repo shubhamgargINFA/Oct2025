@@ -1,0 +1,362 @@
+<aetgt:getResponse xmlns:aetgt="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd"
+                   xmlns:types1="http://schemas.active-endpoints.com/appmodules/repository/2010/10/avrepository.xsd">
+   <types1:Item>
+      <types1:EntryId>hOzEkhK6LlRkPUE-gt-594449-2023-05-16T09:56:33.128Z::pd.xml</types1:EntryId>
+      <types1:Name>MDEFileImport</types1:Name>
+      <types1:MimeType>application/xml+process</types1:MimeType>
+      <types1:Description/>
+      <types1:AppliesTo/>
+      <types1:Tags/>
+      <types1:VersionLabel>1.0</types1:VersionLabel>
+      <types1:State>CURRENT</types1:State>
+      <types1:ProcessGroup/>
+      <types1:CreatedBy>bundle-license-notifier</types1:CreatedBy>
+      <types1:CreationDate>2023-05-16T09:56:33Z</types1:CreationDate>
+      <types1:ModifiedBy/>
+      <types1:PublicationStatus>published</types1:PublicationStatus>
+      <types1:PublishedBy>bundle-license-notifier</types1:PublishedBy>
+      <types1:PublicationDate>2023-05-16T09:56:35Z</types1:PublicationDate>
+      <types1:PublishedContributionId>project:/spi.MDEFileImport/MDEFileImport.pd.xml</types1:PublishedContributionId>
+      <types1:Entry>
+         <process xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2010/10/avosScreenflow.xsd"
+                  xmlns:tfm="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"
+                  xmlns:list="urn:activevos:spi:list:functions"
+                  displayName="MDEFileImport"
+                  name="MDEFileImport"
+                  overrideAPIName="false">
+            <parameterSet xmlns="http://schemas.active-endpoints.com/appmodules/screenflow/2021/04/taskflowModel.xsd"/>
+            <appliesTo/>
+            <description/>
+            <tags/>
+            <generator>Informatica Process Designer 11</generator>
+            <input>
+               <parameter description=""
+                          name="jobInstance"
+                          required="true"
+                          type="reference">
+                  <options>
+                     <option name="referenceTo">$po:$any</option>
+                     <option name="required">false</option>
+                     <option name="isCopy">true</option>
+                  </options>
+               </parameter>
+               <parameter description=""
+                          name="skipCleanup"
+                          required="true"
+                          type="boolean">
+                  <options>
+                     <option name="defaultvalue">false</option>
+                     <option name="boolean_show_as">checkbox</option>
+                     <option name="required">false</option>
+                  </options>
+               </parameter>
+            </input>
+            <output>
+               <field description="" name="jobInstanceId" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+               <field description="" name="fault" type="string">
+                  <options>
+                     <option name="required">false</option>
+                  </options>
+               </field>
+            </output>
+            <tempFields>
+               <field description="" name="status" type="string">
+                  <options>
+                     <option name="required">false</option>
+                     <option name="initialvalue">SUCCESS</option>
+                  </options>
+               </field>
+            </tempFields>
+            <notes/>
+            <deployment suspendOnFault="false" tracingLevel="verbose">
+               <rest>
+                  <allowedRoles>
+                     <role>Admin</role>
+                     <role>Designer</role>
+                     <role>Business360ProcessExecutor</role>
+                  </allowedRoles>
+               </rest>
+            </deployment>
+            <flow id="a">
+               <start id="b">
+                  <link id="k76ijvdh" targetId="k76ijvdg"/>
+               </start>
+               <service id="k76ijvdg">
+                  <title>Start File Import Job</title>
+                  <serviceName>StartFileImportJob</serviceName>
+                  <serviceGUID/>
+                  <serviceInput>
+                     <parameter name="jobInstance" source="field" updatable="true">input.jobInstance</parameter>
+                  </serviceInput>
+                  <link id="k76ijvee" targetId="k76ijved"/>
+               </service>
+               <milestone id="k76ijved">
+                  <title>Job Created</title>
+                  <httpStatus>202</httpStatus>
+                  <link id="kpghit5g" targetId="kpgj62fa"/>
+               </milestone>
+               <eventContainer id="kpgj62fa">
+                  <service id="kpghit5f">
+                     <title>File Import Staging</title>
+                     <serviceName>FileImport</serviceName>
+                     <serviceGUID/>
+                     <serviceInput>
+                        <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                     </serviceInput>
+                  </service>
+                  <flow id="kpgj62fc">
+                     <link id="kpgj62fd" targetId="kpgj62fa" type="containerLink"/>
+                  </flow>
+                  <flow id="kpgj62ff">
+                     <assignment id="kpgj62fy">
+                        <title>Assignment to status</title>
+                        <operation source="constant" to="temp.status">FAILED</operation>
+                     </assignment>
+                     <link id="kpgj62fg" targetId="kpgj62fa" type="containerLink"/>
+                  </flow>
+                  <link id="kpgj62fb" targetId="kpgj62fc" type="containerLink"/>
+                  <link id="kpghit5h" targetId="kpghit1c"/>
+                  <events>
+                     <catch faultField="faultInfo" id="kpgj62f9" interrupting="true">
+                        <link id="kpgj62fe" targetId="kpgj62ff" type="containerLink"/>
+                     </catch>
+                  </events>
+               </eventContainer>
+               <container id="kpghit1c" type="exclusive">
+                  <title>File Staging Status</title>
+                  <flow id="kpghit1d">
+                     <eventContainer id="kpghit49">
+                        <service id="kpghit3p">
+                           <title>Ingress</title>
+                           <serviceName>IngressSplit</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kpghit4b">
+                           <link id="kpghit4c" targetId="kpghit49" type="containerLink"/>
+                        </flow>
+                        <flow id="kpghit4e">
+                           <service id="kpgj62bs">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDEFileImport</parameter>
+                                 <parameter name="step" source="constant">Ingress</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kpgj62bt" targetId="kpghit4m"/>
+                           </service>
+                           <throw id="kpghit4m">
+                              <title>Throw 2</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">CAI_FI_002</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Ingress Failed</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kpghit4a" targetId="kpghit4b" type="containerLink"/>
+                        <link id="kpghit3q" targetId="kpghit7h"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kpghit3z" interrupting="true">
+                              <link id="kpghit4d" targetId="kpghit4e" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="kpghit7h">
+                        <service id="kpghit1n">
+                           <title>Load</title>
+                           <serviceName>Load</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kpghit7j">
+                           <link id="kpghit7k" targetId="kpghit7h" type="containerLink"/>
+                        </flow>
+                        <flow id="kpghit7m">
+                           <service id="kpgj62k9">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDEFileImport</parameter>
+                                 <parameter name="step" source="constant">Load</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kpgj62ka" targetId="kpghit7u"/>
+                           </service>
+                           <throw id="kpghit7u">
+                              <title>Throw 3</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">CAI_FI_003</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Load Step Failed</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kpghit7i" targetId="kpghit7j" type="containerLink"/>
+                        <link id="kpghit24" targetId="kpghit8k"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kpghit77" interrupting="true">
+                              <link id="kpghit7l" targetId="kpghit7m" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <eventContainer id="kpghit8k">
+                        <service id="kpghit1s">
+                           <title>Index</title>
+                           <serviceName>Index</serviceName>
+                           <serviceGUID/>
+                           <serviceInput>
+                              <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           </serviceInput>
+                        </service>
+                        <flow id="kpghit8m">
+                           <eventContainer id="kqmd6elf">
+                              <service id="kqmd6eht">
+                                 <title>Match Tokenize</title>
+                                 <serviceName>MatchIndex</serviceName>
+                                 <serviceGUID/>
+                                 <serviceInput>
+                                    <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 </serviceInput>
+                              </service>
+                              <flow id="kqmd6elh">
+                                 <link id="kqmd6eli" targetId="kqmd6elf" type="containerLink"/>
+                              </flow>
+                              <flow id="kqmd6elk">
+                                 <service id="ldlfqjfa">
+                                    <title>End Step</title>
+                                    <serviceName>EndStep</serviceName>
+                                    <serviceGUID/>
+                                    <serviceInput>
+                                       <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                       <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                       <parameter name="status" source="constant">FAILED</parameter>
+                                       <parameter name="processName" source="constant">MDEFileImport</parameter>
+                                       <parameter name="step" source="constant">Match Tokenize</parameter>
+                                       <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                    </serviceInput>
+                                    <link id="ldlfqjfb" targetId="kqmd6emx"/>
+                                 </service>
+                                 <throw id="kqmd6emx">
+                                    <title>Throw 5</title>
+                                    <throwInput>
+                                       <parameter name="code" source="field" updatable="true">output.faultInfo[1]/code</parameter>
+                                       <parameter name="detail" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                                       <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                                    </throwInput>
+                                 </throw>
+                              </flow>
+                              <link id="kqmd6elg" targetId="kqmd6elh" type="containerLink"/>
+                              <events>
+                                 <catch faultField="faultInfo" id="kqmd6ejc" interrupting="true">
+                                    <link id="kqmd6elj" targetId="kqmd6elk" type="containerLink"/>
+                                 </catch>
+                              </events>
+                           </eventContainer>
+                           <link id="kpghit8n" targetId="kpghit8k" type="containerLink"/>
+                        </flow>
+                        <flow id="kpghit8p">
+                           <service id="kpgj62l8">
+                              <title>End Step</title>
+                              <serviceName>EndStep</serviceName>
+                              <serviceGUID/>
+                              <serviceInput>
+                                 <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                                 <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                                 <parameter name="status" source="constant">FAILED</parameter>
+                                 <parameter name="processName" source="constant">MDEFileImport</parameter>
+                                 <parameter name="step" source="constant">Index</parameter>
+                                 <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                              </serviceInput>
+                              <link id="kpgj62l9" targetId="kpghit8x"/>
+                           </service>
+                           <throw id="kpghit8x">
+                              <title>Throw 4</title>
+                              <throwInput>
+                                 <parameter name="code" source="constant" updatable="true">CAI_FI_004</parameter>
+                                 <parameter name="detail" source="constant" updatable="true">Index step failed</parameter>
+                                 <parameter name="reason" source="field" updatable="true">output.faultInfo[1]/reason</parameter>
+                              </throwInput>
+                           </throw>
+                        </flow>
+                        <link id="kpghit8l" targetId="kpghit8m" type="containerLink"/>
+                        <link id="kpgo3gka" targetId="kpgo3gk9"/>
+                        <events>
+                           <catch faultField="faultInfo" id="kpghit8c" interrupting="true">
+                              <link id="kpghit8o" targetId="kpghit8p" type="containerLink"/>
+                           </catch>
+                        </events>
+                     </eventContainer>
+                     <service id="kpgo3gk9">
+                        <title>End Step</title>
+                        <serviceName>EndStep</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                           <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           <parameter name="status" source="constant">SUCCESS</parameter>
+                           <parameter name="processName" source="constant">MDEFileImport</parameter>
+                        </serviceInput>
+                        <link id="kpgo3gkb" targetId="kpghit1t"/>
+                     </service>
+                     <end id="kpghit1t"/>
+                  </flow>
+                  <flow id="kpghit1u">
+                     <service id="kpgj62ei">
+                        <title>End Step</title>
+                        <serviceName>EndStep</serviceName>
+                        <serviceGUID/>
+                        <serviceInput>
+                           <parameter name="skipCleanup" source="field" updatable="true">input.skipCleanup</parameter>
+                           <parameter name="jobInstanceId" source="field" updatable="true">output.jobInstanceId</parameter>
+                           <parameter name="status" source="constant">FAILED</parameter>
+                           <parameter name="processName" source="constant">MDEFileImport</parameter>
+                           <parameter name="step" source="constant">File Import Staging</parameter>
+                           <parameter name="error" source="field" updatable="true">output.faultInfo[1]/detail</parameter>
+                        </serviceInput>
+                        <link id="kpgj62ej" targetId="kpghit1v"/>
+                     </service>
+                     <throw id="kpghit1v">
+                        <title>Throw 1</title>
+                        <throwInput>
+                           <parameter name="code" source="constant" updatable="true">CAI_FI_001</parameter>
+                           <parameter name="detail" source="constant" updatable="true">File Import Staging failed</parameter>
+                           <parameter name="reason" source="constant" updatable="true">Check ingress logs</parameter>
+                        </throwInput>
+                     </throw>
+                  </flow>
+                  <link id="kpghit1w" targetId="kpghit1d" type="containerLink">
+                     <condition source="formula">
+                        <function name="string-equals">
+                           <arg name="left">{$temp.status}</arg>
+                           <arg name="right">SUCCESS</arg>
+                        </function>
+                     </condition>
+                  </link>
+                  <link id="kpghit1x" targetId="kpghit1u" type="containerLink"/>
+               </container>
+            </flow>
+         </process>
+      </types1:Entry>
+      <types1:GUID>ew3dvABFUCec2akpXVmgGR</types1:GUID>
+      <types1:DisplayName>MDEFileImport</types1:DisplayName>
+   </types1:Item>
+   <types1:CurrentServerDateTime>2025-09-22T12:10:42.259Z</types1:CurrentServerDateTime>
+</aetgt:getResponse>
