@@ -1,0 +1,49 @@
+{
+  "objectInfo" : {
+    "id" : "05WcnZsc7jakPJqsNJ3129",
+    "name" : "GitHubTest",
+    "type" : "MDM_BUSINESS_ENTITY",
+    "providerName" : "MDM",
+    "providerLevelValidator" : {
+      "solutionsToValidate" : { },
+      "additionalSolutionsInSource" : {
+        "b360" : {
+          "version" : "202510.01"
+        },
+        "c360" : {
+          "version" : "202510.01"
+        },
+        "p360" : {
+          "version" : "202510.01"
+        },
+        "mde" : {
+          "version" : "202507.01"
+        },
+        "s360" : {
+          "version" : "202510.01"
+        }
+      },
+      "vaderMigrationStatus" : "NOT_STARTED"
+    },
+    "metadata" : {
+      "modelVersion" : {
+        "major" : 1,
+        "minor" : 1
+      },
+      "repoInfo" : {
+        "repoHandle" : "githubtest"
+      },
+      "contextAttributes" : null,
+      "additionalInfo" : {
+        "description" : "",
+        "contentType" : "Binary",
+        "documentState" : "COMPLETE"
+      }
+    }
+  },
+  "dataFileExtension" : "dat",
+  "updateTime" : "2025-09-22T08:50:17.882Z",
+  "objectRefs" : [ ],
+  "readableFileExtension" : null,
+  "readableFilePresent" : false
+}
